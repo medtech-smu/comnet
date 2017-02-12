@@ -6,19 +6,42 @@ import java.net.*;
 public class ChatClient {
 
 	public static void main(String[] args) {
-		try {
-			Socket skt = new Socket("localhost", 1234);
-			BufferedReader in = new BufferedReader(new
-					InputStreamReader(skt.getInputStream()));
-			System.out.print("Received string: '");
-			while (!in.ready()) {}
-			System.out.println(in.readLine());
-			System.out.print("'\n");
-			in.close();
-			skt.close();
+		BufferedReader fromServer = null, fromUser = null;
+		PrintWriter toServer = null;
+		Socket sock = null;
+		try
+		{
+			if (args.length == 0)
+				sock = new Socket(InetAddress.getLocalHost(),4000);
+			else
+				sock = new Socket(InetAddress.getByName(args[0]),4000);
+			fromServer = new BufferedReader(new
+					InputStreamReader(sock.getInputStream()));
+			fromUser = new BufferedReader(new InputStreamReader(System.in));
+			toServer = new PrintWriter(sock.getOutputStream(),true);
+			String Usrmsg, Srvmsg;
+			System.out.println("Type \"bye\" to quit");
+			while (true)
+			{
+				System.out.print("Enter msg to server : ");
+				Usrmsg = fromUser.readLine();
+				if (Usrmsg==null || Usrmsg.equals("bye"))
+				{
+					toServer.println("bye"); break;
+				}
+				else
+					toServer.println(Usrmsg);
+				Srvmsg = fromServer.readLine();
+				System.out.println(Srvmsg);
+			}
+			fromUser.close();
+			fromServer.close();
+			toServer.close();
+			sock.close();
 		}
-		catch(Exception e) {
-			System.out.print("Whoops! It didn't work!\n");
+		catch (IOException ioe)
+		{
+			System.err.println(ioe);
 		}
 	}
 

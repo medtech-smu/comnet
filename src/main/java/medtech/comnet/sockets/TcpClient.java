@@ -17,8 +17,7 @@ public class TcpClient {
 				soc = new Socket(InetAddress.getLocalHost(),4444);
 			else
 				soc = new Socket(InetAddress.getByName(args[0]),4444);
-			dis = new BufferedReader(new
-					InputStreamReader(soc.getInputStream()));
+			dis = new BufferedReader(new InputStreamReader(soc.getInputStream()));
 			sdate=dis.readLine();
 			System.out.println("The date/time on server is : " +sdate);
 			ps = new PrintStream(soc.getOutputStream());

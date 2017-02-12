@@ -23,8 +23,7 @@ public class TcpServer {
 				ps = new PrintStream(cs.getOutputStream());
 				Date d = new Date();
 				ps.println(d);
-				dis = new BufferedReader(new
-						InputStreamReader(cs.getInputStream()));
+				dis = new BufferedReader(new InputStreamReader(cs.getInputStream()));
 				inet = dis.readLine();
 				System.out.println("Client System/IP address is :"+ inet);
 				ps.close();
