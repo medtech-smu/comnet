@@ -8,15 +8,11 @@ WidgetLCD lcd(V1);
 
 void estabablishConnection() {
   // Your WiFi credentials.
-  //char ssid[] = "Guest";
-  //char pass[] = "123456789";
-  char ssid[] = "Galaxy Alpha FH";
-  char pass[] = "fh1995fh";
-  //char ssid[] = "Comtrend_FH";
-  //char pass[] = "fedi2010FAHMI";
+  //char ssid[] = "************";
+  //char pass[] = "*************";
 
-  //char auth[] = "bd5476610aac40f8883d1ed2ca55db05";
-  char auth[] = "2d84c97c79a641eeae6150aefa02e668";
+
+  //char auth[] = "********";
   
   Blynk.begin(auth, ssid, pass);
   lcd.clear(); //Use it to clear the LCD Widget
