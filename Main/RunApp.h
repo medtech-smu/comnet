@@ -1,4 +1,5 @@
 #include <BlynkSimpleMKR1000.h>
+#include "StoreData.h"
 
 // When you click on the button
 void runApp (int switchState){
@@ -8,11 +9,13 @@ void runApp (int switchState){
     Blynk.notify("Please open up! Somebody is on the door!"); //Get notification every 15 secs
     lcd.clear(); //Use it to clear the LCD Widget
     lcd.print(0, 0, "Open The Door!"); // use: (position X: 0-15, position Y: 0-1, "Message you want to print")
+    saveData("Guest");
   }
 }
 
 BLYNK_WRITE(V2) {
   if (param.asInt()) {
+    saveData("DoorOpened");
     digitalWrite(greenLedPin, HIGH);
     digitalWrite(redLedPin, LOW);
     myLock.write(90); //The lock turns 90 degrees
