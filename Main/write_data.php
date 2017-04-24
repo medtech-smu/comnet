@@ -5,7 +5,7 @@
     $dbname= "******"; // enter database name
     $dbusername = "************";  // enter database username
     $dbpassword = "***************";  // enter database password
-    $localhost = "***********"; // IMPORTANT: if you are using XAMPP enter "localhost", but if you have an online website enter its address, ie."www.yourwebsite.com"
+    $localhost = "***********"; // // localhost ip@
 
     // Connect to your database
 
