@@ -1,11 +1,15 @@
-    <?php
+//Place this file in "xampp\htdocs" directory
+// id, data and time are the attributes of the database
+
+//Structure of the page
+<?php
     $url=$_SERVER['REQUEST_URI'];
     header("Refresh: 5; URL=$url");  // Refresh the webpage every 5 seconds
 
     ?>
     <html>
         <head>
-            <title>Doorbell Data</title>
+            <title>Data</title>
         </head>
             <body>
                 <h1>Data readings</h1>
@@ -18,18 +22,18 @@
             
         <?php
             // Connect to database
-            $dbname= "doorbell";
-            $dbusername = "arduino";  // enter database username, I used "arduino" in step 2.2
-            $dbpassword = "arduinotest";  // enter database password, I used "arduinotest" in step 2.2
-            $localhost = "192.168.43.66"; // IMPORTANT: if you are using XAMPP enter "localhost", but if you have an online website enter its address, ie."www.yourwebsite.com"
-            // IMPORTANT: If you are using XAMPP you will have to enter your computer IP address here, if you are using webpage enter webpage address (ie. "www.yourwebpage.com")
+            $dbname= "*****";
+            $dbusername = "*****";  // enter database username
+            $dbpassword = "*****";  // enter database password
+            $localhost = "*****"; // localhost ip@
 
             $dbconnect = mysqli_connect($localhost, $dbusername, $dbpassword, $dbname);
             
             // Retrieve all records and display them   
-            $result = mysqli_query($dbconnect,'SELECT * FROM data ORDER BY id DESC');
+               // Insert the table name in /tablename/
+            $result = mysqli_query($dbconnect,'SELECT * FROM /tablename/ ORDER BY id DESC');
             
-            // Process every record
+            // fetch every record in the db and display it
             
             while($row = mysqli_fetch_array($result))
             {      
