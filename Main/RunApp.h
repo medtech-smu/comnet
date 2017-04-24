@@ -9,14 +9,14 @@ void runApp (int switchState){
     Blynk.notify("Please open up! Somebody is on the door!"); //Get notification every 15 secs
     lcd.clear(); //Use it to clear the LCD Widget
     lcd.print(0, 0, "Open The Door!"); // use: (position X: 0-15, position Y: 0-1, "Message you want to print")
-    saveData("Guest");
+    saveData("Guest"); // Message sent to database if guest pushes the button on hardware side.
   }
 }
 
 BLYNK_WRITE(V2) {
   if (param.asInt()) {
-    saveData("DoorOpened");
-    digitalWrite(greenLedPin, HIGH);
+    saveData("DoorOpened"); // Message sent to database if door is opened by user
+    digitalWrite(greenLedPin, HIGH); 
     digitalWrite(redLedPin, LOW);
     myLock.write(90); //The lock turns 90 degrees
     lcd.clear();
