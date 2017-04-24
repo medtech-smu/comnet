@@ -1,7 +1,7 @@
 #include <BlynkSimpleMKR1000.h>
 #include "StoreData.h"
 
-// When you click on the button
+// When you click on the push button (hardware side)
 void runApp (int switchState){
   Blynk.run();
   if (switchState == HIGH) {
@@ -13,6 +13,7 @@ void runApp (int switchState){
   }
 }
 
+// When you click on the unlock button (software side)
 BLYNK_WRITE(V2) {
   if (param.asInt()) {
     saveData("DoorOpened"); // Message sent to database if door is opened by user
